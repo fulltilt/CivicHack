@@ -1,0 +1,114 @@
+@font-face{font-family:Ubuntu;font-style:normal;font-weight:300;src:local('Ubuntu Light'),local('Ubuntu-Light'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/_aijTyevf54tkVDLy-dlnLO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:normal;font-weight:400;src:local('Ubuntu'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/vRvZYZlUaogOuHbBTT1SNevvDin1pK8aKteLpeZ5c0A.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:normal;font-weight:500;src:local('Ubuntu Medium'),local('Ubuntu-Medium'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/OsJ2DjdpjqFRVUSto6IffLO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:normal;font-weight:700;src:local('Ubuntu Bold'),local('Ubuntu-Bold'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/0ihfXUL2emPh0ROJezvraLO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:italic;font-weight:300;src:local('Ubuntu Light Italic'),local('Ubuntu-LightItalic'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/DZ_YjBPqZ88vcZCcIXm6VrrIa-7acMAeDBVuclsi6Gc.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:italic;font-weight:400;src:local('Ubuntu Italic'),local('Ubuntu-Italic'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/kbP_6ONYVgE-bLa9ZRbvvnYhjbSpvc47ee6xR_80Hnw.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:italic;font-weight:500;src:local('Ubuntu Medium Italic'),local('Ubuntu-MediumItalic'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/ohKfORL_YnhBMzkCPoIqwrrIa-7acMAeDBVuclsi6Gc.woff) format('woff')}@font-face{font-family:Ubuntu;font-style:italic;font-weight:700;src:local('Ubuntu Bold Italic'),local('Ubuntu-BoldItalic'),url(http://themes.googleusercontent.com/static/fonts/ubuntu/v5/OMD20Sg9RTs7sUORCEN-7brIa-7acMAeDBVuclsi6Gc.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans'),local('OpenSans'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans Semibold'),local('OpenSans-Semibold'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:800;src:local('Open Sans Extrabold'),local('OpenSans-Extrabold'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/EInbV5DfGHOiMmvb1Xr-hqRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:italic;font-weight:300;src:local('Open Sans Light Italic'),local('OpenSansLight-Italic'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/PRmiXeptR36kaC0GEAetxvR_54zmj3SbGZQh3vCOwvY.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:italic;font-weight:400;src:local('Open Sans Italic'),local('OpenSans-Italic'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/xjAJXh38I15wypJXxuGMBrrIa-7acMAeDBVuclsi6Gc.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:italic;font-weight:600;src:local('Open Sans Semibold Italic'),local('OpenSans-SemiboldItalic'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/PRmiXeptR36kaC0GEAetxuw_rQOTGi-AJs5XCWaKIhU.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:italic;font-weight:700;src:local('Open Sans Bold Italic'),local('OpenSans-BoldItalic'),url(http://themes.googleusercontent.com/static/fonts/opensans/v8/PRmiXeptR36kaC0GEAetxhbnBKKEOwRKgsHDreGcocg.woff) format('woff')}
+      html {
+        /*padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        font-family:'Open Sans',Helvetica,Arial,sans-serif;
+      }
+        
+      .title {
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        font-size: 30px;
+        text-align: text-top;
+      }
+      .title a:link, .title a:visited, .title a:active { 
+				color: black; 
+				text-decoration: none; 
+			} 
+			.title a:hover {
+				color: green;
+			}
+		  article {
+				width: 100%;
+				margin-bottom: 3em;
+			}
+			footer {
+				background: #282e28;
+				color: #fff;
+				padding-top: 4em;
+				padding-bottom: 2em;
+				text-align: center;
+				margin: auto;
+				margin-top: 2em;
+			}
+			section {
+				display: inline-block;
+			}
+			.article-header {
+				border-bottom: 1px dotted rgba(0,0,0,0.1);
+        overflow: hidden;
+			}
+			.content-primary {
+				padding: 0;
+			}
+			.content-secondary {
+				background-color: #ECECEC;
+				height: 500px;
+				border-radius: 4px;
+				padding-top: 1em;
+			}
+			@media only screen and (max-device-width: 992px) {
+			  .content-secondary  {
+			    display: none;
+			  }
+
+        .login {
+          border-left: 0; /* not currently working */
+        }
+			}
+			.fb-comments {
+				padding-top: 2em;
+				border-top: 1px solid #3e433e;
+			}
+			.fa {
+				padding-left: 1em;
+			}
+			.navbar-brand {
+				padding: 15px 30px;
+			}
+      .vote-buttons {
+        height: 80px;
+        width: 55px;
+        display: inline-block;
+      }
+      .vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on {
+        background-image: url('../img/button_sprites.png');
+        display: block;
+        width: 41px;
+        height: 25px;
+        cursor: pointer;
+      }
+      .vote-up-on {
+        background-position: 0px -230px;
+      }      
+      .vote-up-off {
+        background-position: 0px -265px;
+      }
+      .vote-count {
+        font-size: 24px;
+        padding-left: 14px;
+      }
+      .vote-down-on {
+        background-position: 0px -330px;
+      }      
+      .vote-down-off {
+        background-position: 0px -300px;
+      }
+      .post-date {
+        margin-top: 3px;
+        margin-left: 60px;
+        border-top: 1px dotted rgba(0,0,0,0.1);
+        width: 90%;
+      }
+      .posts {
+        list-style: none;
+        padding: 0;
+      }
+      .btn {
+        margin-top: 10px;
+      }
+
+      .login {
+        border-left: 1px solid #333;
+        
+      }

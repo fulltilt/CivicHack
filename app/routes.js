@@ -1,15 +1,17 @@
+var Vote = require('./models/user');
+
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
 
 	// show the home page (will also have our login links)
 	app.get('/', function(req, res) {
-		res.render('index.hbs');
+		res.render('posts.html');
 	});
 
 	// PROFILE SECTION =========================
 	app.get('/profile', isLoggedIn, function(req, res) {
-		res.render('profile.hbs', {
+		res.render('profile.html', {
 			user : req.user
 		});
 	});
@@ -183,7 +185,33 @@ module.exports = function(app, passport) {
 		});
 	});
 
+  // ROUTES
+  app.get('/api/vote', function(req, res) {
+    // use mongoose to get all todos in the database
+    Vote.findById('53eff475d8cec34e162ff36c', function(err, vote) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err);
+      res.json(vote.count); // return all todos in JSON format
+    });
+  });
 
+  app.post('/api/vote', function(req, res) {
+		Vote.findById('53eff475d8cec34e162ff36c', function(err, vote) {
+      if (err) {
+        res.send(err);
+      } else {
+        console.log(vote.count);
+        vote.count = parseInt(vote.count, 10) + parseInt(req.body.vote, 10);
+        vote.save(function(err) {
+          if (!err) {
+            console.log('vote count updated');
+            res.json(vote.count);
+          }
+        });
+      }
+    });
+	});
 };
 
 // route middleware to ensure user is logged in
