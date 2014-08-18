@@ -1,27 +1,21 @@
-var Vote = require('./models/user');
+var Post = require('./models/post');
 
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
-
-	// show the home page (will also have our login links)
-	app.get('/', function(req, res) {
-		res.render('posts.html');
-	});
-
 	// PROFILE SECTION =========================
 	app.get('/profile', isLoggedIn, function(req, res) {
-		res.render('profile.html', {
+		res.render('profile.hbs', {
 			user : req.user
 		});
 	});
-
+/*
 	// LOGOUT ==============================
 	app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
 	});
-
+*/
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================
@@ -185,33 +179,101 @@ module.exports = function(app, passport) {
 		});
 	});
 
-  // ROUTES
-  app.get('/api/vote', function(req, res) {
-    // use mongoose to get all todos in the database
-    Vote.findById('53eff475d8cec34e162ff36c', function(err, vote) {
-      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+// =============================================================================
+// API =========================================================================
+// =============================================================================
+  // GET all posts
+  app.get('/api/posts', function(req, res) {
+    Post.find(function(err, posts) {
       if (err)
         res.send(err);
-      res.json(vote.count); // return all todos in JSON format
+      res.json(posts);
     });
   });
 
-  app.post('/api/vote', function(req, res) {
-		Vote.findById('53eff475d8cec34e162ff36c', function(err, vote) {
+  // GET individual post
+  app.get('/api/posts/:id', function(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+      if (err)
+        res.send(err);
+
+      res.json(post);
+    });
+  });
+
+  // CREATE new post
+  app.post('/api/posts/new', function(req, res) {
+    // create new post where information comes from AJAX request from Angular
+    Post.create({
+      title: 'New Post',
+      entry: '',
+      createdOn: Date.now(),
+      modifiedOn: Date.now(),
+			votes: [],
+postedBy: '53efb9119f3aac000060d759'  // need to change as the User is hardcoded
+    }, function(err, post) {
+      if (err)
+        res.send(err);
+
+      res.json({id: post._id});
+    });
+  });
+
+	// UPDATE post
+  app.post('/api/posts/:id', function(req, res) {
+    Post.findById(req.params.id, function(err, post) {
       if (err) {
         res.send(err);
       } else {
-        console.log(vote.count);
-        vote.count = parseInt(vote.count, 10) + parseInt(req.body.vote, 10);
-        vote.save(function(err) {
+        post.title = req.body.title;
+        post.entry = req.body.entry;
+        post.modifiedOn = Date.now();
+        post.save(function(err) {
           if (!err) {
-            console.log('vote count updated');
-            res.json(vote.count);
+            res.redirect('/');
           }
         });
       }
     });
+  });
+
+  // DELETE a post
+  app.delete('/api/posts/:id', function(req, res) {
+    Post.remove({
+      _id: req.params.id
+    }, function(err, todo) {
+      if (err)
+        res.send(err);
+
+      // get and return all posts after you create one
+      Post.find(function(err, posts) {
+        if (err)
+          res.send(err);
+        res.json(posts);
+      });
+    });
+  });
+
+  // update post vote count
+  app.post('/api/vote/:id', function(req, res) {
+		Post.findById(req.params.id, function(err, post) {
+      if (err) {
+        res.send(err);
+      } else {
+        post.voteCount = parseInt(post.voteCount, 10) + parseInt(req.body.vote, 10);
+        post.save(function(err) {
+          if (err)
+            res.send(err);
+          res.json(post.voteCount);
+        });
+      }
+    });
 	});
+
+  // route to handle all Angular requests
+  app.get('*', function(req, res) {
+    res.render('index.html');
+  });
 };
 
 // route middleware to ensure user is logged in

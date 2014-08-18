@@ -1,0 +1,30 @@
+<!--<form class="form-horizontal" action="{{actionUrl}}" method="post">-->
+<form class="form-horizontal">
+  <fieldset>
+    <legend>{{post.title}}</legend>
+    
+    <div class="control-group">
+      <div class="controls">
+        <div class="input-group col-xs-4">
+          <span class="input-group-addon">&nbsp;Title&nbsp;</span>
+          <input type="text" class="form-control input-medium" id="title" name="title" ng-model="formData.title">
+        </div>  
+      </div>
+    </div><br/><br/>
+
+    <div class="control-group">
+      <div class="controls">
+        <textarea class="form-control" rows="10" id="entry" name="entry" ng-model="formData.entry"></textarea>
+      </div>  
+    </div><br/><br/>
+
+    <div class="control-group">
+      <div class="controls">
+        <!-- <button type="submit" class="btn btn-primary" ng-click="updatePost(post._id)"><i class="glyphicon glyphicon-floppy-disk"></i>  Save</button> -->
+        <a class="btn btn-primary" href="/post/{{post.title}}" ng-click="updatePost(post._id); getPost(post._id)"><i class="glyphicon glyphicon-floppy-disk"></i>  Save</a>&nbsp;
+        <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-home"></i> Home</a>
+      </div>  
+    </div>      
+
+  </fieldset>
+</form>

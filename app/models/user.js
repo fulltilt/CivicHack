@@ -42,9 +42,3 @@ userSchema.methods.validPassword = function(password) {
 
 // create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);
-
-var voteSchema = mongoose.Schema({
-        count : { type: Number, default: 0 }
-    });
-
-module.exports = mongoose.model('Vote', voteSchema);
