@@ -17,9 +17,9 @@
 					<strong>password</strong>: {{ user.local.password }}
 				</p>
 				
-				<a href="/unlink/local" class="btn btn-default">Unlink</a>
+				<a redir href="/unlink/local" class="btn btn-default">Unlink</a>
 			{{else}} 
-				<a href="/connect/local" class="btn btn-default">Connect Local</a>
+				<a redir href="/connect/local" class="btn btn-default">Connect Local</a>
 			{{/if}}
 
 		</div>
@@ -31,7 +31,7 @@
 			<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
 
 			<!-- check if the user has this token (is the user authenticated with this social account) -->
-			{{#if user.facebook.token }}
+			<container ng-show="user.facebook.token">
 				<p>
 					<strong>id</strong>: {{ user.facebook.id }}<br>
 					<strong>token</strong>: {{ user.facebook.token }}<br>
@@ -39,10 +39,11 @@
 					<strong>name</strong>: {{ user.facebook.name }}<br>
 				</p>
 
-				<a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
-			{{else}}
-				<a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
-			{{/if}}
+				<a redir href="/unlink/facebook" class="btn btn-primary">Unlink</a>
+			</container>
+			<container ng-hide="user.facebook.token">
+				<a redir href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+			</container>
 
 		</div>
 	</div>
@@ -62,9 +63,9 @@
 					<strong>username</strong>: {{ user.twitter.username }}
 				</p>
 
-				<a href="/unlink/twitter" class="btn btn-info">Unlink</a>
+				<a redir href="/unlink/twitter" class="btn btn-info">Unlink</a>
 			{{else}}
-				<a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
+				<a redir href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
 			{{/if}}
 
 		</div>
@@ -83,9 +84,9 @@
 					<strong>name</strong>: {{ user.google.name }}
 				</p>
 
-				<a href="/unlink/google" class="btn btn-danger">Unlink</a>
+				<a redir href="/unlink/google" class="btn btn-danger">Unlink</a>
 			{{else}}
-				<a href="/connect/google" class="btn btn-danger">Connect Google</a>
+				<a redir href="/connect/google" class="btn btn-danger">Connect Google</a>
 			{{/if}}
 
 		</div>

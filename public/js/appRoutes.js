@@ -7,9 +7,9 @@
 				templateUrl: '/partials/posts.html'
 			})
 
-			//.when('/login', {
-			//	templateUrl: '/views/login.html'
-			//})
+			.when('/login', {
+				templateUrl: '/partials/login.html'
+			})
 
 			.when('/profile', {
 				templateUrl: '/partials/profile.html'

@@ -1,0 +1,27 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog"> 
+    <form name="form" ng-submit="submit()"> 
+      <div class="modal-content"> 
+        <div class="modal-header"> 
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">Cancel</button>
+            <h3> </h3> 
+        </div>
+        <div class="modal-body">
+          <table border="0">
+          	<tr>
+          		<td>Email: </td>
+          		<td><input type="email" ng-model="email"></input> </td>
+          	</tr> 
+          	<tr>
+          		<td>Password: </td>
+          		<td><input type="password" ng-model="pwd"> </input></td>
+          	</tr>
+          	<tr>
+          		<td colspan="2"><input type="submit" class="btn btn-primary" id="submit" ng-click="submit()" value="Login"></input></td>
+          	</tr>
+          </table> 
+        </div>
+      </div> 
+    </form>
+  </div> 
+</div>
