@@ -2,19 +2,18 @@
 <form class="form-horizontal">
   <fieldset>
     <legend>{{post.title}}</legend>
-    
     <div class="control-group">
       <div class="controls">
         <div class="input-group col-xs-4">
           <span class="input-group-addon">&nbsp;Title&nbsp;</span>
-          <input type="text" class="form-control input-medium" id="title" name="title" ng-model="formData.title">
+          <input type="text" class="form-control input-medium" id="title" name="title" ng-model="post.title">
         </div>  
       </div>
     </div><br/><br/>
 
     <div class="control-group">
       <div class="controls">
-        <textarea class="form-control" rows="10" id="entry" name="entry" ng-model="formData.entry"></textarea>
+        <textarea class="form-control" rows="10" id="entry" name="entry" ng-model="post.entry">{{post.entry}}</textarea>
       </div>  
     </div><br/><br/>
 

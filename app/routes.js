@@ -9,13 +9,14 @@ module.exports = function(app, passport) {
 			user : req.user
 		});
 	});
-/*
+
 	// LOGOUT ==============================
 	app.get('/logout', function(req, res) {
+		console.log('log out');
 		req.logout();
 		res.redirect('/');
 	});
-*/
+
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================
@@ -210,7 +211,7 @@ module.exports = function(app, passport) {
       createdOn: Date.now(),
       modifiedOn: Date.now(),
 			votes: [],
-postedBy: '53efb9119f3aac000060d759'  // need to change as the User is hardcoded
+			postedBy: req.body.user
     }, function(err, post) {
       if (err)
         res.send(err);

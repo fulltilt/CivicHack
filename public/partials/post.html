@@ -1,55 +1,36 @@
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>
+FB = null;
+(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
+  //if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=334102343406010";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<article>
-	<h1>{{post.title}}</h1>
-	<p class="article-header">Posted: {{post.createdOn | date}}</p>
-	 
-	<p/>
-	 
-	<p>
-		{{post.entry}}
-	</p>
-
-	<p>
-		<a href="/post/edit/{{post.title}}" ng-click="getPost(post._id)">Edit</a>
-		<a href="/delete/{{post.title}}" ng-click="deletePost(post._id)">Delete</a>
-	</p>
-</article>
-
-<div class="fb-comments" data-href="http://civic-hack.herokuapp.com/post/{{entry._id}}" data-numposts="5" data-colorscheme="light"></div>
-
-<!--
 <div class="container">
 	<div class="row">
 		<section class="content-primary col-md-9 col-xs-12">
 			<article>
-				<h1>{{entry.title}}</h1>
-				<p class="article-header">Posted: {{entry.createdOn | date}}</p>
+				<span class="title">{{post.title}}</span>
+				<p class="article-header">Posted: {{post.createdOn | date}} by: {{post.postedBy}}</p>
 				 
-				<p/>
-				 
-				{{entry.entry}}
-
 				<p>
-					<a href="/entry/edit/{{entry._id}}">Edit</a>
-					<a href="/delete/{{entry._id}}">Delete</a>
+					{{post.entry}}
+				</p>
+
+				<p ng-show="isAuthor(post.postedBy)">
+					<a href="/post/edit/{{post.title}}" ng-click="getPost(post._id)">Edit</a>
+					<a href="/delete/{{post.title}}" ng-click="deletePost(post._id)">Delete</a>
 				</p>
 			</article>
 
-			<div class="fb-comments" data-href="http://civic-hack.herokuapp.com/article/{{entry._id}}" data-numposts="5" data-colorscheme="light"></div>
+			<div class="fb-comments" data-href="http://civic-hack.herokuapp.com/post/{{post.title}}" data-numposts="5" data-colorscheme="light">
 		</section>
 
 		<section class="content-secondary col-md-3">
 			<p>Advertisement</p>
-		</section>
+		</section>				
 	</div>
 </div>
-
--->

@@ -15,10 +15,10 @@
         		<a ng-click="updateVote($index, post._id, -1)" ng-class="voteDownOn[$index] ? 'vote-down-on' : 'vote-down-off'"></a>
         	</div>
       		<span class="title"><a href="/post/{{post.title}}" ng-click="getPost(post._id)">{{post.title}}</a></span>
-      		<p class="post-date">Posted: {{post.createdOn | date}}</p>
+      		<p class="post-date">Posted: {{post.createdOn | date}} by: {{post.postedBy}}</p>
 				</li>
       </ul>
-			<a class="btn btn-primary" href="/post/new" ng-click="createPost()"> New Post</a>
+			<a class="btn btn-primary" ng-click="createPost()"> New Post</a>
 		</section>
 
 		<section class="content-secondary col-md-3">

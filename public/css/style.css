@@ -110,5 +110,14 @@
 
       .login {
         border-left: 1px solid #333;
-        
+      }
+
+      .close {
+        font-size: 11px;
+        color: #369;
+      }
+
+      .modal-body {
+        margin-left: 210px;
+        margin-bottom: 10px;
       }
