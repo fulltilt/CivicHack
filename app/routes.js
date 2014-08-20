@@ -255,17 +255,37 @@ module.exports = function(app, passport) {
     });
   });
 
-  // update post vote count
+  // update post vote count and return the new count
   app.post('/api/vote/:id', function(req, res) {
 		Post.findById(req.params.id, function(err, post) {
       if (err) {
         res.send(err);
       } else {
-        post.voteCount = parseInt(post.voteCount, 10) + parseInt(req.body.vote, 10);
+				var voteType = parseInt(req.body.vote, 10);
+				var userID = req.body.userID;
+
+				if (voteType === 1) {	// user clicked 'up vote'
+					if (post.upVotes.indexOf(userID) === -1) {
+						post.upVotes.push(userID);
+						post.downVotes.splice(userID);
+					} else {
+						post.upVotes.splice(userID);
+					}
+				} else if (voteType === -1) { // user clicked 'down vote'
+					if (post.downVotes.indexOf(userID) === -1) {
+						post.downVotes.push(userID);
+						post.upVotes.splice(userID);
+					} else {
+						post.downVotes.splice(userID);
+					}
+				}
+
+				post.voteCount = post.upVotes.length - post.downVotes.length;
         post.save(function(err) {
           if (err)
             res.send(err);
-          res.json(post.voteCount);
+          //res.json(post.voteCount);
+          res.json(post);
         });
       }
     });

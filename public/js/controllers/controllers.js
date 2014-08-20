@@ -2,9 +2,14 @@
   angular.module('BlogApp.controllers', [])
     .controller('mainController', function($scope, $http, $window, $route, $cookieStore) {
       $scope.loggedIn = false;                  // determine if user is logged in
-      $scope.post = $cookieStore.get('post');   // get state from cookie in case User refreshes on the individual Post page
+      $scope.post = $cookieStore.get('post');     // get state from cookie in case User refreshes on the individual Post page
+      //$scope.posts = $cookieStore.get('posts');   // get state from cookie in case User refreshes on the main Posts page
+      //$scope.voteUpOn = $cookieStore.get('voteUpOn');
+      //$scope.voteDownOn = $cookieStore.get('voteDownOn');
       $scope.name = '';
       $scope.user = '';
+      $scope.voteUpOn = [];
+      $scope.voteDownOn = [];
 
       // determine if a User is logged in
       $http.get('/api/userData').success(function(user) {
@@ -15,13 +20,6 @@
       }).error(function(data) {
         console.log('IsLogged User Error: ' + data);
       });
-
-      $scope.isAuthor = function(name) {
-        if ($scope.user) {
-          return ($scope.user.facebook.name === name);
-        }
-        return false;
-      };
 
       // get all posts
       $scope.getPosts = function() {
@@ -45,7 +43,6 @@
       // create new post
       $scope.createPost = function() {
         if (!$scope.loggedIn) {
-          //$scope.loggingIn = true;
           $scope.showLogin('You\'ll need to be logged in to do that');
           return;
         }
@@ -79,17 +76,33 @@
 
       // update vote count
       $scope.updateVote = function(index, id, vote) {
-        //$scope.voteUpOn[index] = !$scope.voteUpOn[index];
         if (!$scope.loggedIn) {
           $scope.showLogin('You\'ll need to be logged in to do that');
           return;
         }
 
-        $http.post('/api/vote/' + id, { vote: parseInt(vote, 10) }).success(function(data) {
-          $scope.posts[index].voteCount = data;
+        $http.post('/api/vote/' + id, { vote: parseInt(vote, 10), userID: $scope.user._id }).success(function(data) {
+          // update vote count
+          $scope.posts[index].voteCount = data.upVotes.length - data.downVotes.length;
+
+          // dynamically change class depending on current Users vote state
+          $scope.voteUpOn[index] = data.upVotes.indexOf($scope.user._id) !== -1;
+          $scope.voteDownOn[index] = data.downVotes.indexOf($scope.user._id) !== -1;
+
+          //$cookieStore.put('posts', data);   // save the state of the Posts in case user refreshes on main Posts page
+          //$cookieStore.put('voteUpOn', voteUpOn);
+          //$cookieStore.put('voteDownOn', voteDownOn);
         }).error(function(data) {
           console.log('Update Post Vote Error: ' + data);
         });
+      };
+
+      // determine if the current user is the author of the current post
+      $scope.isAuthor = function(name) {
+        if ($scope.user) {
+          return ($scope.user.facebook.name === name);
+        }
+        return false;
       };
 
       $scope.showLogin = function (message) {

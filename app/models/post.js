@@ -5,8 +5,8 @@ var postSchema = new mongoose.Schema({
   modifiedOn: { type: Date, default: Date.now },
   createdOn: { type: Date, default: Date.now },
   entry: String,
-  voteCount: { type: Number, default: 0 },
-  votes: [{ user_id : mongoose.Schema.Types.ObjectId , type: Number }],
+  upVotes: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
+  downVotes: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
   postedBy: { type: String, ref: 'User' }
 });
 
