@@ -2,7 +2,6 @@
 	angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
 		$routeProvider
-			// home page
 			.when('/', {
 				templateUrl: '/partials/posts.html'
 			})
@@ -25,6 +24,10 @@
 
 			.when('/post/edit/:id', {
 				templateUrl: '/partials/edit-post.html'
+			})
+
+			.when('/about', {
+				templateUrl: '/partials/about.html'
 			})
 
 			.otherwise({redirectTo: '/'});

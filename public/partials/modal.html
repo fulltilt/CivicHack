@@ -1,27 +1,15 @@
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog"> 
-    <form name="form" ng-submit="submit()"> 
+<div>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> 
       <div class="modal-content"> 
         <div class="modal-header"> 
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">Cancel</button>
-            <h3> </h3> 
+          <a class="close" ng-click="cancel()">close this window</a>
+          <h4>{{message}}</h4>
         </div>
         <div class="modal-body">
-          <table border="0">
-          	<tr>
-          		<td>Email: </td>
-          		<td><input type="email" ng-model="email"></input> </td>
-          	</tr> 
-          	<tr>
-          		<td>Password: </td>
-          		<td><input type="password" ng-model="pwd"> </input></td>
-          	</tr>
-          	<tr>
-          		<td colspan="2"><input type="submit" class="btn btn-primary" id="submit" ng-click="submit()" value="Login"></input></td>
-          	</tr>
-          </table> 
+          <a href="/auth/facebook" target="_self" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
         </div>
       </div> 
-    </form>
-  </div> 
+    </div> 
+  </div>
 </div>

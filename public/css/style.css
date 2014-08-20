@@ -79,20 +79,20 @@
         cursor: pointer;
       }
       .vote-up-on {
-        background-position: 0px -230px;
+        background-position: 0 -230px;
       }      
       .vote-up-off {
-        background-position: 0px -265px;
+        background-position: 0 -265px;
       }
       .vote-count {
         font-size: 24px;
         padding-left: 14px;
       }
       .vote-down-on {
-        background-position: 0px -330px;
+        background-position: 0 -330px;
       }      
       .vote-down-off {
-        background-position: 0px -300px;
+        background-position: 0 -300px;
       }
       .post-date {
         margin-top: 3px;

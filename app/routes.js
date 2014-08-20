@@ -278,7 +278,6 @@ module.exports = function(app, passport) {
 
   // route to handle all Angular requests
   app.get('*', function(req, res) {
-    //res.render('index.html');
     res.render('../public/partials/index.html');
   });
 };
