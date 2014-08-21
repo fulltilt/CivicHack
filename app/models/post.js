@@ -7,6 +7,7 @@ var postSchema = new mongoose.Schema({
   entry: String,
   upVotes: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
   downVotes: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
+  voteCount: { '$subtract' : [ 'upVotes.length', 'downVotes.length'], default: 0, type: Number},
   postedBy: { type: String, ref: 'User' }
 });
 

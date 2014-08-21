@@ -12,7 +12,6 @@ module.exports = function(app, passport) {
 
 	// LOGOUT ==============================
 	app.get('/logout', function(req, res) {
-		console.log('log out');
 		req.logout();
 		res.redirect('/');
 	});
@@ -210,7 +209,8 @@ module.exports = function(app, passport) {
       entry: '',
       createdOn: Date.now(),
       modifiedOn: Date.now(),
-			votes: [],
+			downVotes: [],
+			upVotes: [],
 			postedBy: req.body.user
     }, function(err, post) {
       if (err)
@@ -284,7 +284,6 @@ module.exports = function(app, passport) {
         post.save(function(err) {
           if (err)
             res.send(err);
-          //res.json(post.voteCount);
           res.json(post);
         });
       }
